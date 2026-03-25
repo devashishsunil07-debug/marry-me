@@ -5,42 +5,64 @@
   <style>
     body {
       text-align: center;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       margin-top: 100px;
+      overflow: hidden;
     }
+
+    h1 {
+      font-size: 28px;
+    }
+
     button {
-      padding: 10px 20px;
+      padding: 12px 25px;
       font-size: 18px;
       margin: 10px;
+      cursor: pointer;
+    }
+
+    #no {
       position: absolute;
     }
+
     #yes {
-      position: static;
+      display: none;
     }
   </style>
 </head>
+
 <body>
 
-<h1>Will you marry me? ❤️</h1>
+<h1>Will you marry me Alff 🫶🏻😫</h1>
 
 <button id="yes" onclick="yesClicked()">Yes 💚</button>
 <button id="no">No ❌</button>
 
 <script>
+let noCount = 0;
 const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
 
-noBtn.addEventListener("touchstart", move);
-noBtn.addEventListener("mouseover", move);
+function moveButton() {
+  noCount++;
 
-function move() {
-  const x = Math.random() * window.innerWidth;
-  const y = Math.random() * window.innerHeight;
+  // Move NO button randomly
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 100);
   noBtn.style.left = x + "px";
   noBtn.style.top = y + "px";
+
+  // After 3 tries, show YES button
+  if (noCount >= 3) {
+    yesBtn.style.display = "inline-block";
+  }
 }
 
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("touchstart", moveButton);
+
 function yesClicked() {
-  document.body.innerHTML = "<h1>🎉 Congratulations ❤️ You said YES!</h1>";
+  document.body.innerHTML = "<h1>🎉 Congratulations Alfred ❤️</h1>";
 }
 </script>
 
